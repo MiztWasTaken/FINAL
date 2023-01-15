@@ -1,16 +1,23 @@
-getgenv().Target = true
+--[[
+███████╗██╗░░░░░░█████╗░░██████╗██╗░░██╗░██╗░░░░░░░██╗
+██╔════╝██║░░░░░██╔══██╗██╔════╝██║░░██║░██║░░██╗░░██║
+█████╗░░██║░░░░░███████║╚█████╗░███████║░╚██╗████╗██╔╝
+██╔══╝░░██║░░░░░██╔══██║░╚═══██╗██╔══██║░░████╔═████║░
+██║░░░░░███████╗██║░░██║██████╔╝██║░░██║░░╚██╔╝░╚██╔╝░
+╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░
 
+]]
+-- Toggle
+getgenv().Target = true
 -- Configuration
 getgenv().Key = Enum.KeyCode.Q
 getgenv().Prediction = 0.178
 getgenv().ChatMode = false
 getgenv().NotifMode = true
     getgenv().PartMode = true
-    getgenv().AirshotFunccc = true
+    getgenv().AirshotFunccc = false
     getgenv().Partz = "HumanoidRootPart"
 getgenv().AutoPrediction = true
-getgenv().Fov = 20
-getgenv().Circle = true
 --
     _G.Types = {
         Ball = Enum.PartType.Ball,
@@ -23,11 +30,11 @@ getgenv().Circle = true
     Tracer.Name = "gay"	
     Tracer.Anchored = true		
     Tracer.CanCollide = false
-    Tracer.Transparency = 0.3
+    Tracer.Transparency = 0.8
     Tracer.Parent = game.Workspace	
     Tracer.Shape = _G.Types.Block
-    Tracer.Size = Vector3.new(1,1,1)
-    Tracer.Color = Color3.fromRGB(0, 0, 139)
+    Tracer.Size = Vector3.new(14,14,14)
+    Tracer.Color = Color3.fromRGB(255,0,0)
     
     --
     local plr = game.Players.LocalPlayer
@@ -35,31 +42,17 @@ local mouse = plr:GetMouse()
 local Runserv = game:GetService("RunService")
 
 circle = Drawing.new("Circle")
-circle.Color = Color3.fromRGB(25,25,25)
+circle.Color = Color3.fromRGB(255,255,255)
 circle.Thickness = 0
 circle.NumSides = 732
-circle.Radius = getgenv().Fov
+circle.Radius = 120
 circle.Thickness = 0
-circle.Transparency = 0
-circle.Visible = getgenv().Circle
+circle.Transparency = 0.7
+circle.Visible = true
 circle.Filled = false
 
 Runserv.RenderStepped:Connect(function()
     circle.Position = Vector2.new(mouse.X,mouse.Y+35)
-    if getgenv().AirshotFunccc == true then
-            if Plr ~= nil then else return; end
-            if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
-                getgenv().Partz = "RightFoot"
-            else
-                Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
-                    if new == Enum.HumanoidStateType.Freefall then
-                    getgenv().Partz = "RightFoot"
-                    else
-                        getgenv().Partz = "HumanoidRootPart"
-                    end
-                end)
-            end
-end
 end)
     
     	local guimain = Instance.new("Folder", game.CoreGui)
@@ -71,7 +64,7 @@ end)
     --
     if getgenv().valiansh == true then
                         game.StarterGui:SetCore("SendNotification", {
-                   Title = "funxpyware.cc",
+                   Title = "Valiant",
                    Text = "Already Loaded!",
                    Duration = 5
         
@@ -96,7 +89,7 @@ end)
         	end	
                if getgenv().NotifMode then
     			game.StarterGui:SetCore("SendNotification", {
-        Title = "Miztical";
+        Title = "";
         Text = "Target: "..tostring(Plr.Character.Humanoid.DisplayName);
     
     })
@@ -107,14 +100,14 @@ end)
         	end	
         if getgenv().NotifMode then
                         game.StarterGui:SetCore("SendNotification", {
-                   Title = "Miztical",
+                   Title = "",
                    Text = "Unlocked",
                    Duration = 5
                })
            elseif getgenv().Target == false then
                         game.StarterGui:SetCore("SendNotification", {
                    Title = "",
-                   Text = "Target left or died.",
+                   Text = "Target isn't enabled",
                    Duration = 5
      
                    })
@@ -150,6 +143,7 @@ if getgenv().PartMode then
 			Tracer.CFrame = CFrame.new(Plr.Character.LowerTorso.Position+(Plr.Character.LowerTorso.Velocity*Prediction))
 		else
 			Tracer.CFrame = CFrame.new(0, 9999, 0)
+
 		end
 	end)
 end
@@ -168,6 +162,22 @@ end
 		end
 		return old(...)
 	end)
+
+
+if getgenv().AirshotFunccc == true then
+
+            if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+                getgenv().Partz = "RightFoot"
+            else
+                Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+                    if new == Enum.HumanoidStateType.Freefall then
+                    getgenv().Partz = "RightFoot"
+                    else
+                        getgenv().Partz = "LowerTorso"
+                    end
+                end)
+            end
+end
 ---
 	while wait() do
 	if getgenv().AutoPrediction == true then
@@ -179,15 +189,15 @@ end
         elseif ping < 125 then
             getgenv().Prediction = 0.149
         elseif ping < 110 then
-            getgenv().Prediction = 0.140
+            getgenv().Prediction = 0.146
         elseif ping < 105 then
-            getgenv().Prediction = 0.133
+            getgenv().Prediction = 0.138
         elseif ping < 90 then
-            getgenv().Prediction = 0.130
+            getgenv().Prediction = 0.136
         elseif ping < 80 then
-            getgenv().Prediction = 0.128
+            getgenv().Prediction = 0.134
         elseif ping < 70 then
-            getgenv().Prediction = 0.1230
+            getgenv().Prediction = 0.131
         elseif ping < 60 then
             getgenv().Prediction = 0.1229
         elseif ping < 50 then
