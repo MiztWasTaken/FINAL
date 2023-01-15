@@ -1,12 +1,3 @@
---[[
-███████╗██╗░░░░░░█████╗░░██████╗██╗░░██╗░██╗░░░░░░░██╗
-██╔════╝██║░░░░░██╔══██╗██╔════╝██║░░██║░██║░░██╗░░██║
-█████╗░░██║░░░░░███████║╚█████╗░███████║░╚██╗████╗██╔╝
-██╔══╝░░██║░░░░░██╔══██║░╚═══██╗██╔══██║░░████╔═████║░
-██║░░░░░███████╗██║░░██║██████╔╝██║░░██║░░╚██╔╝░╚██╔╝░
-╚═╝░░░░░╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░
-
-]]
 -- Toggle
 getgenv().Target = true
 -- Configuration
@@ -64,7 +55,7 @@ end)
     --
     if getgenv().valiansh == true then
                         game.StarterGui:SetCore("SendNotification", {
-                   Title = "Valiant",
+                   Title = "Miztical",
                    Text = "Already Loaded!",
                    Duration = 5
         
@@ -89,7 +80,7 @@ end)
         	end	
                if getgenv().NotifMode then
     			game.StarterGui:SetCore("SendNotification", {
-        Title = "";
+        Title = "Miztical";
         Text = "Target: "..tostring(Plr.Character.Humanoid.DisplayName);
     
     })
@@ -100,13 +91,13 @@ end)
         	end	
         if getgenv().NotifMode then
                         game.StarterGui:SetCore("SendNotification", {
-                   Title = "",
-                   Text = "Unlocked",
+                   Title = "Miztical",
+                   Text = "Target Unlocked",
                    Duration = 5
                })
            elseif getgenv().Target == false then
                         game.StarterGui:SetCore("SendNotification", {
-                   Title = "",
+                   Title = "Miztical",
                    Text = "Target isn't enabled",
                    Duration = 5
      
