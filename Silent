@@ -9,7 +9,7 @@ getgenv().NotifMode = true
     getgenv().AirshotFunccc = true
     getgenv().Partz = "HumanoidRootPart"
 getgenv().AutoPrediction = true
-getgenv().Fov = 100
+getgenv().Fov = 10
 getgenv().Circle = true
 --
     _G.Types = {
